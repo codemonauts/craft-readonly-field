@@ -1,0 +1,41 @@
+{
+  "name": "codemonauts/craft-readonly-field",
+  "description": "Craft 3 read-only plaintext field",
+  "version": "1.0.0",
+  "type": "craft-plugin",
+  "minimum-stability": "dev",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin"
+  ],
+  "support": {
+    "docs": "https://github.com/codemonauts/craft-readonly-field/blob/master/README.md",
+    "issues": "https://github.com/codemonauts/craft-readonly-field/issues"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "codemonauts\\readonly\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Codemonauts",
+      "homepage": "https://www.codemonauts.com"
+    }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0"
+  },
+  "extra": {
+    "handle": "readonly",
+    "name": "Read-only Field",
+    "developer": "Codemonauts",
+    "developerUrl": "https://www.codemonauts.com",
+    "hasCpSection": false,
+    "hasSettings": false,
+    "class": "codemonauts\\readonly\\Readonly"
+  }
+}
