@@ -1,4 +1,5 @@
 <?php
+
 namespace codemonauts\readonly\fields;
 
 use Craft;
@@ -10,8 +11,10 @@ use yii\db\Schema;
 
 class Readonly extends Field implements PreviewableFieldInterface
 {
-    // Static
-    // =========================================================================
+    /**
+     * @var string The type of database column the field should have in the content table
+     */
+    public $columnType = Schema::TYPE_STRING;
 
     /**
      * @inheritdoc
@@ -20,14 +23,6 @@ class Readonly extends Field implements PreviewableFieldInterface
     {
         return Craft::t('readonly', 'Read-only Field');
     }
-
-    /**
-     * @var string The type of database column the field should have in the content table
-     */
-    public $columnType = Schema::TYPE_STRING;
-
-    // Public Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
@@ -66,6 +61,7 @@ class Readonly extends Field implements PreviewableFieldInterface
         if ($value !== null) {
             $value = LitEmoji::unicodeToShortcode($value);
         }
+
         return $value;
     }
 
@@ -76,6 +72,7 @@ class Readonly extends Field implements PreviewableFieldInterface
     {
         $value = (string)$value;
         $value = LitEmoji::unicodeToShortcode($value);
+
         return $value;
     }
 }

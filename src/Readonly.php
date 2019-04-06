@@ -1,4 +1,5 @@
 <?php
+
 namespace codemonauts\readonly;
 
 use \craft\base\Plugin;
