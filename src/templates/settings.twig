@@ -1,0 +1,10 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: "Template String"|t('readonly'),
+    instructions: "Twig template string for displaying the value in CP. If not set, the value is printed. You can use {{ value }} and {{ element }}."|t('readonly'),
+    id: 'template',
+    name: 'template',
+    value: field.template,
+    errors: field.getErrors('template')
+}) }}

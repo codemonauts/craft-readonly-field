@@ -1,4 +1,4 @@
-# Read-only Field for Craft CMS 3.x
+# Read-only Field for Craft CMS
 
 ![Icon](resources/readonly.png)
 
@@ -10,7 +10,7 @@ Sometimes you add content to Craft entries (for example via an API) that should 
 
 ## Requirements
 
- * Craft CMS >= 3.0.0
+ * Craft CMS >= 4.0.0
 
 ## Installation
 
