@@ -6,13 +6,15 @@ use craft\base\Plugin;
 use craft\events\RegisterComponentTypesEvent;
 use craft\services\Fields;
 use yii\base\Event;
-use codemonauts\readonly\fields\Readonly as ReadonlyField;
-use codemonauts\readonly\feedme\Readonly as ReadonlyFeedme;
+use codemonauts\readonly\fields\ReadonlyField;
+use codemonauts\readonly\feedme\ReadonlyField as ReadonlyFeedme;
 use craft\feedme\events\RegisterFeedMeFieldsEvent;
 use craft\feedme\services\Fields as FeedMeFields;
 
-class Readonly extends Plugin
+class ReadonlyPlugin extends Plugin
 {
+    public $schemaVersion = '1.0.1';
+
     public function init()
     {
         parent::init();

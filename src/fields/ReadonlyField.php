@@ -6,10 +6,11 @@ use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\base\PreviewableFieldInterface;
+use craft\base\SortableFieldInterface;
 use LitEmoji\LitEmoji;
 use yii\db\Schema;
 
-class Readonly extends Field implements PreviewableFieldInterface
+class ReadonlyField extends Field implements PreviewableFieldInterface, SortableFieldInterface
 {
     /**
      * @var string The type of database column the field should have in the content table
