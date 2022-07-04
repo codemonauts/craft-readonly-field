@@ -1,4 +1,10 @@
-# Read-only Field Changelog
+# Release Notes for Read-only field Plugin
+
+## 2.0.1 - 2022-07-04
+
+### Fixed
+
+- Fixed value rendering.
 
 ## 2.0.0 - 2022-04-29
 
@@ -17,11 +23,11 @@
 ## 1.0.1 - 2019-09-14
 
 ### Added
-- 
+
 - Support for Feed-Me plugin
 
 ## 1.0.0 - 2019-04-06
 
 ### Added
-- 
+
 - Initial release

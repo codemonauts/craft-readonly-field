@@ -110,7 +110,7 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\SyntaxError
      */
-    private function renderValue(?string $value, ElementInterface $element): string
+    private function renderValue(?string $value, ElementInterface $element): ?string
     {
         if ($this->template !== null) {
             try {

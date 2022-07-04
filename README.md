@@ -10,7 +10,7 @@ Sometimes you add content to Craft entries (for example via an API) that should 
 
 ## Requirements
 
- * Craft CMS >= 4.0.0
+* Craft CMS >= 4.0.0
 
 ## Installation
 
@@ -19,9 +19,10 @@ Open your terminal and go to your Craft project:
 ``` shell
 cd /path/to/project
 composer require codemonauts/craft-readonly-field
+./craft plugin/install readonly
 ```
 
-In the control panel, go to Settings → Plugins and click the “install” button for *Read-only Field*.
+You can also install the plugin via the Plugin Store in the Craft Control Panel.
 
 ## Usage
 
