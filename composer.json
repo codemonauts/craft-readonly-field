@@ -24,7 +24,7 @@
     "issues": "https://github.com/codemonauts/craft-readonly-field/issues"
   },
   "require": {
-    "craftcms/cms": "^4.0.0"
+    "craftcms/cms": "^5.0.0"
   },
   "autoload": {
     "psr-4": {
