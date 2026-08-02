@@ -1,7 +1,6 @@
 {
   "name": "codemonauts/craft-readonly-field",
   "description": "Craft CMS plugin to add a simple, read-only plaintext field.",
-  "version": "2.0.1",
   "type": "craft-plugin",
   "keywords": [
     "craft",
@@ -24,7 +23,7 @@
     "issues": "https://github.com/codemonauts/craft-readonly-field/issues"
   },
   "require": {
-    "craftcms/cms": "^4.0.0"
+    "craftcms/cms": "^5.0.0"
   },
   "autoload": {
     "psr-4": {

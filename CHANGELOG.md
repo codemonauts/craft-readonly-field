@@ -1,5 +1,16 @@
 # Release Notes for Read-only field Plugin
 
+## 3.0.0 - 2026-08-02
+
+### Added
+
+- Craft CMS 5 compatibility.
+
+### Changed
+
+- Requires Craft CMS 5.0 or later.
+- Migrated the field to the Craft 5 APIs (element preview, input rendering, entries service).
+
 ## 2.0.1 - 2022-07-04
 
 ### Fixed

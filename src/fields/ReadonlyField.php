@@ -17,7 +17,10 @@ use yii\db\Schema;
 class ReadonlyField extends Field implements PreviewableFieldInterface, SortableFieldInterface
 {
     /**
-     * @var string The type of database column the field should have in the content table
+     * @var string The DB column type for the value.
+     * @deprecated In Craft 5 liegen Feldwerte in der JSON-`content`-Spalte; diese
+     *   Einstellung ist wirkungslos (Ersatz wäre die statische `dbType()`, Default TEXT).
+     *   Bleibt nur, damit bestehende/migrierte Felder mit gespeichertem `columnType` laden.
      */
     public string $columnType = Schema::TYPE_STRING;
 
@@ -37,20 +40,12 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
     /**
      * @inheritdoc
      */
-    public function getContentColumnType(): string
-    {
-        return $this->columnType;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getInputHtml($value, ElementInterface $element = null): string
+    protected function inputHtml(mixed $value, ?ElementInterface $element, bool $inline = false): string
     {
         return Craft::$app->getView()->renderTemplate('readonly/input', [
             'name' => $this->handle,
             'value' => $value,
-            'renderedValue' => $this->renderValue($value, $element),
+            'renderedValue' => $this->renderValue($value !== null ? (string)$value : null, $element),
             'field' => $this,
         ]);
     }
@@ -58,7 +53,7 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null): mixed
+    public function serializeValue(mixed $value, ?ElementInterface $element): mixed
     {
         if ($value !== null) {
             $value = LitEmoji::unicodeToShortcode($value);
@@ -70,16 +65,15 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
     /**
      * @inheritdoc
      */
-    public function getSearchKeywords($value, ElementInterface $element): string
+    protected function searchKeywords(mixed $value, ElementInterface $element): string
     {
-        $value = (string)$value;
-        return LitEmoji::unicodeToShortcode($value);
+        return LitEmoji::unicodeToShortcode((string)$value);
     }
 
     /**
      * @inheritdoc
      */
-    public function getElementConditionRuleType(): ?string
+    public function getElementConditionRuleType(): array|string|null
     {
         return TextFieldConditionRule::class;
     }
@@ -87,7 +81,7 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml(): ?string
+    protected function settingsHtml(): ?string
     {
         return Craft::$app->getView()->renderTemplate('readonly/settings', [
             'field' => $this,
@@ -97,20 +91,18 @@ class ReadonlyField extends Field implements PreviewableFieldInterface, Sortable
     /**
      * @inheritdoc
      */
-    public function getTableAttributeHtml(mixed $value, ElementInterface $element): string
+    public function getPreviewHtml(mixed $value, ElementInterface $element): string
     {
         return Html::encode(StringHelper::stripHtml($this->renderValue((string)$value, $element)));
     }
 
     /**
-     * @param string $value
-     * @param \craft\base\ElementInterface $element
+     * Rendert den Wert über das konfigurierte Twig-Template (falls gesetzt).
      *
-     * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\SyntaxError
      */
-    private function renderValue(?string $value, ElementInterface $element): ?string
+    private function renderValue(?string $value, ?ElementInterface $element = null): ?string
     {
         if ($this->template !== null) {
             try {
