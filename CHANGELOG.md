@@ -1,5 +1,11 @@
 # Release Notes for Read-only field Plugin
 
+## 2.0.2 - 2026-08-02
+
+### Changed
+
+- Internal code cleanup and coding-standard alignment.
+
 ## 2.0.1 - 2022-07-04
 
 ### Fixed
